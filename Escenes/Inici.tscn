@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://75jf0tqjtptq"]
+
+[ext_resource type="Script" path="res://Script/Inici.gd" id="1_wxyb8"]
+[ext_resource type="AudioStream" uid="uid://b4io838qcmxm6" path="res://Sounds/Sand Conquest Menu.mp3" id="2_dnc5s"]
+[ext_resource type="Texture2D" uid="uid://c2i51f5k4j61o" path="res://FonsInici.png" id="2_knq4k"]
+[ext_resource type="StyleBox" uid="uid://c68vucodigjhp" path="res://stylebox1.tres" id="3_j3a1o"]
+[ext_resource type="Texture2D" uid="uid://7qxn3rb7mwln" path="res://botó.png" id="3_yo8tr"]
+[ext_resource type="FontFile" uid="uid://bd1bx24j7uwpo" path="res://Pixelify_Sans/static/PixelifySans-Medium.ttf" id="4_f53b2"]
+
+[sub_resource type="Theme" id="Theme_sdu35"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pgvss"]
+font = ExtResource("4_f53b2")
+font_size = 30
+font_color = Color(0.309804, 0.207843, 0, 1)
+
+[node name="Inici" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wxyb8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(622, 349.5)
+scale = Vector2(1.29583, 1.29444)
+texture = ExtResource("2_knq4k")
+
+[node name="Inici" type="Button" parent="."]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 392.0
+offset_right = 707.0
+offset_bottom = 475.0
+theme = SubResource("Theme_sdu35")
+theme_override_styles/normal = ExtResource("3_j3a1o")
+theme_override_styles/hover = ExtResource("3_j3a1o")
+theme_override_styles/pressed = ExtResource("3_j3a1o")
+theme_override_styles/disabled = ExtResource("3_j3a1o")
+theme_override_styles/focus = ExtResource("3_j3a1o")
+icon = ExtResource("3_yo8tr")
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="Inici"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 162.0
+offset_bottom = 73.0
+text = "INICI"
+label_settings = SubResource("LabelSettings_pgvss")
+
+[node name="Sortir" type="Button" parent="."]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 488.0
+offset_right = 707.0
+offset_bottom = 571.0
+theme_override_styles/normal = ExtResource("3_j3a1o")
+theme_override_styles/hover = ExtResource("3_j3a1o")
+theme_override_styles/pressed = ExtResource("3_j3a1o")
+theme_override_styles/disabled = ExtResource("3_j3a1o")
+theme_override_styles/focus = ExtResource("3_j3a1o")
+icon = ExtResource("3_yo8tr")
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="Sortir"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 168.0
+offset_bottom = 73.0
+text = "SORTIR"
+label_settings = SubResource("LabelSettings_pgvss")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dnc5s")
+autoplay = true
+
+[connection signal="mouse_entered" from="Inici" to="." method="_on_inici_mouse_entered"]
+[connection signal="mouse_exited" from="Inici" to="." method="_on_inici_mouse_exited"]
+[connection signal="pressed" from="Inici" to="." method="_on_inici_pressed"]
+[connection signal="mouse_entered" from="Sortir" to="." method="_on_sortir_mouse_entered"]
+[connection signal="mouse_exited" from="Sortir" to="." method="_on_sortir_mouse_exited"]
+[connection signal="pressed" from="Sortir" to="." method="_on_sortir_pressed"]

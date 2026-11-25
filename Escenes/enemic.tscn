@@ -1,0 +1,135 @@
+[gd_scene load_steps=19 format=3 uid="uid://2c3wccc2da0a"]
+
+[ext_resource type="Script" path="res://Script/enemic.gd" id="1_5r6t1"]
+[ext_resource type="Texture2D" uid="uid://dpmtejogltibp" path="res://AlienSprites/mort 1.png" id="1_8tjjw"]
+[ext_resource type="Texture2D" uid="uid://datc82kovy7fw" path="res://AlienSprites/alien0.png" id="1_lfhtk"]
+[ext_resource type="Texture2D" uid="uid://cm36jjuxwsh0n" path="res://AlienSprites/mort 2.png" id="2_ic1ej"]
+[ext_resource type="Texture2D" uid="uid://c5fhmns1bn3lr" path="res://AlienSprites/alien1.png" id="2_vl5s0"]
+[ext_resource type="Texture2D" uid="uid://c815ni4yph8y8" path="res://AlienSprites/mort 3.png" id="3_54t8u"]
+[ext_resource type="Texture2D" uid="uid://dfcj2u1c4ia05" path="res://AlienSprites/alien2.png" id="3_n5168"]
+[ext_resource type="Texture2D" uid="uid://dp75l3lidexsc" path="res://AlienSprites/alien3.png" id="4_beifr"]
+[ext_resource type="Texture2D" uid="uid://dkp3y2dfbs3vp" path="res://AlienSprites/mort 4.png" id="4_h3y1s"]
+[ext_resource type="Texture2D" uid="uid://lnne3nhfedbw" path="res://AlienSprites/mort 5.png" id="5_ibwjo"]
+[ext_resource type="AudioStream" uid="uid://oh2t7aq6rj7j" path="res://Sounds/videogame-death-sound-43894.mp3" id="11_rb4wg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_104xn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lfhtk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vl5s0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n5168")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_beifr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("1_8tjjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ic1ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_54t8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h3y1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ibwjo")
+}],
+"loop": false,
+"name": &"mort",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_237ru"]
+size = Vector2(130.645, 51.6129)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1s0lg"]
+radius = 66.4515
+height = 132.903
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqndn"]
+radius = 47.0
+height = 94.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itxvr"]
+radius = 15.0
+height = 73.5484
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ltnlo"]
+radius = 38.7097
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6qgo"]
+radius = 304.839
+height = 990.323
+
+[node name="Enemic" type="CharacterBody2D"]
+scale = Vector2(0.62, 0.62)
+script = ExtResource("1_5r6t1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -60)
+sprite_frames = SubResource("SpriteFrames_104xn")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.806, 6.129)
+shape = SubResource("RectangleShape2D_237ru")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 27.4194)
+shape = SubResource("CapsuleShape2D_1s0lg")
+
+[node name="Cap" type="Area2D" parent="."]
+position = Vector2(0, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cap"]
+position = Vector2(0, 18)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_eqndn")
+
+[node name="punxes" type="Area2D" parent="."]
+position = Vector2(0, 9.67742)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="punxes"]
+position = Vector2(72, 10)
+shape = SubResource("CapsuleShape2D_itxvr")
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="punxes"]
+position = Vector2(-73, 10)
+shape = SubResource("CapsuleShape2D_itxvr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="punxes"]
+position = Vector2(4.76837e-07, 46.7742)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ltnlo")
+
+[node name="areaDetecció" type="Area2D" parent="."]
+position = Vector2(0, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaDetecció"]
+position = Vector2(2.84217e-14, 50)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_e6qgo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_rb4wg")
+volume_db = -0.19
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Cap" to="." method="_on_cap_body_entered"]
+[connection signal="body_entered" from="punxes" to="." method="_on_punxes_body_entered"]
+[connection signal="body_entered" from="areaDetecció" to="." method="_on_area_detecció_body_entered"]
+[connection signal="body_exited" from="areaDetecció" to="." method="_on_area_detecció_body_exited"]

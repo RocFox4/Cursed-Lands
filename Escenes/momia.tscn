@@ -1,0 +1,200 @@
+[gd_scene load_steps=28 format=3 uid="uid://vr7t2c3f44yn"]
+
+[ext_resource type="Script" path="res://Script/Momia.gd" id="1_t0ibv"]
+[ext_resource type="FontFile" uid="uid://rsx65g5caw1s" path="res://Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="2_5erlo"]
+[ext_resource type="Texture2D" uid="uid://dab03ui0wofgh" path="res://MomiaSprites/MomiaCaient.png" id="2_fecaj"]
+[ext_resource type="Texture2D" uid="uid://w0v8a738in3r" path="res://MomiaSprites/AnimacióCorrer/c1.png" id="3_mc6kg"]
+[ext_resource type="Texture2D" uid="uid://b6678ob1ui2vg" path="res://moneda.png" id="3_tbxsl"]
+[ext_resource type="Texture2D" uid="uid://co2bc2pjd0vnp" path="res://MomiaSprites/AnimacióCorrer/c2.png" id="4_qdurk"]
+[ext_resource type="Texture2D" uid="uid://8gmrbs7txr43" path="res://MomiaSprites/AnimacióCorrer/c3.png" id="5_us62p"]
+[ext_resource type="Texture2D" uid="uid://kua5dfe3lhb8" path="res://MomiaSprites/AnimacióCorrer/c4.png" id="6_jeuhi"]
+[ext_resource type="Texture2D" uid="uid://blyceqvlhpno2" path="res://MomiaSprites/AnimacióCorrer/c5.png" id="7_xvuwg"]
+[ext_resource type="Texture2D" uid="uid://c5wg3iwret0ap" path="res://MomiaSprites/AnimacióCorrer/c6.png" id="8_c62p6"]
+[ext_resource type="Texture2D" uid="uid://ovty1neu1i3p" path="res://MomiaSprites/AnimacióCorrer/c7.png" id="9_f82ow"]
+[ext_resource type="Texture2D" uid="uid://b66t1lfivjkl2" path="res://MomiaSprites/AnimacióCorrer/c8.png" id="10_m3jlf"]
+[ext_resource type="Texture2D" uid="uid://c53h5v6l7k27s" path="res://MomiaSprites/AnimacióMort/Momia1.png" id="11_2bjme"]
+[ext_resource type="Texture2D" uid="uid://dyu2soikbeesq" path="res://MomiaSprites/Momia1.png" id="11_uyd1n"]
+[ext_resource type="Texture2D" uid="uid://fxqx5m8xmvx7" path="res://MomiaSprites/Momia2.png" id="12_7n0dp"]
+[ext_resource type="Texture2D" uid="uid://bxhm1fn5e35rj" path="res://MomiaSprites/AnimacióMort/Momia2.png" id="12_jd50g"]
+[ext_resource type="Texture2D" uid="uid://ctv0r8tuw5n5q" path="res://MomiaSprites/AnimacióMort/Momia3.png" id="13_5j1gf"]
+[ext_resource type="Texture2D" uid="uid://cwk5w12fgnsiy" path="res://MomiaSprites/AnimacióMort/Momia4.png" id="14_ivfhh"]
+[ext_resource type="FontFile" uid="uid://6mcvkyd1hkvp" path="res://Pixelify_Sans/static/PixelifySans-Regular.ttf" id="14_lcfjx"]
+[ext_resource type="Texture2D" uid="uid://dolafp18d0bbs" path="res://MomiaSprites/AnimacióMort/Momia5.png" id="15_b73s2"]
+[ext_resource type="AudioStream" uid="uid://ckjmxy3gucgra" path="res://Sounds/Mort.mp3" id="21_50yn0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lyvnh"]
+radius = 29.0
+height = 107.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ygfp"]
+size = Vector2(29, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5oxmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fecaj")
+}],
+"loop": true,
+"name": &"Caure",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mc6kg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qdurk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_us62p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jeuhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xvuwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c62p6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f82ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m3jlf")
+}],
+"loop": true,
+"name": &"Correr",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.6,
+"texture": ExtResource("11_2bjme")
+}, {
+"duration": 0.6,
+"texture": ExtResource("12_jd50g")
+}, {
+"duration": 0.6,
+"texture": ExtResource("13_5j1gf")
+}, {
+"duration": 0.6,
+"texture": ExtResource("14_ivfhh")
+}, {
+"duration": 0.6,
+"texture": ExtResource("15_b73s2")
+}],
+"loop": false,
+"name": &"Mort",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("11_uyd1n")
+}, {
+"duration": 3.0,
+"texture": ExtResource("12_7n0dp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mtwas"]
+font = ExtResource("2_5erlo")
+font_size = 70
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4hib"]
+font = ExtResource("2_5erlo")
+font_size = 70
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pdgpj"]
+font = ExtResource("14_lcfjx")
+font_size = 35
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="momia" type="CharacterBody2D"]
+floor_snap_length = 7.0
+safe_margin = 0.1
+script = ExtResource("1_t0ibv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+drag_left_margin = 0.25
+drag_top_margin = 0.05
+drag_right_margin = 0.25
+drag_bottom_margin = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -43)
+shape = SubResource("CapsuleShape2D_lyvnh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_2ygfp")
+
+[node name="AnimacióQuiet" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -88)
+scale = Vector2(0.62, 0.62)
+sprite_frames = SubResource("SpriteFrames_5oxmq")
+
+[node name="ContadorMonedes" type="Label" parent="."]
+z_index = 10
+z_as_relative = false
+layout_direction = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 316.0
+offset_top = -241.0
+offset_right = 439.0
+offset_bottom = -144.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_mtwas")
+horizontal_alignment = 2
+
+[node name="SimbolMoneda" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(293.5, -194.75)
+scale = Vector2(0.605, 0.605)
+texture = ExtResource("3_tbxsl")
+
+[node name="contador" type="Timer" parent="."]
+
+[node name="ContadorTemps" type="Label" parent="."]
+z_index = 10
+offset_left = -432.0
+offset_top = -241.0
+offset_right = -350.0
+offset_bottom = -156.0
+label_settings = SubResource("LabelSettings_p4hib")
+
+[node name="Avisos2" type="Label" parent="."]
+z_index = 5
+offset_left = -464.0
+offset_top = 88.0
+offset_right = -129.0
+offset_bottom = 233.0
+label_settings = SubResource("LabelSettings_pdgpj")
+
+[node name="Avisos" type="Label" parent="."]
+z_index = 5
+offset_left = -307.0
+offset_top = -158.0
+offset_right = 307.0
+offset_bottom = -13.0
+label_settings = SubResource("LabelSettings_pdgpj")
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_50yn0")
+
+[connection signal="timeout" from="contador" to="." method="_on_timer_timeout"]
+[connection signal="hidden" from="Avisos2" to="." method="_on_avisos_hidden"]
+[connection signal="hidden" from="Avisos" to="." method="_on_avisos_hidden"]
